@@ -8,8 +8,8 @@
 		<link rel="stylesheet" href="css/layout.css">
 		<link rel="stylesheet" href="css/media-queries.css">
 		<link rel="stylesheet" href="css/magnific-popup.css">
-		<link href='http://fonts.useso.com/css?family=Titillium+Web:400,200,300,600,700' rel='stylesheet' type='text/css'>
-		<script type="text/javascript" src="http://www.youziku.com/webfont/FastJS/5a25e38effc1474ba991f92fcef20061.js"></script>
+		<!--<link href='http://fonts.useso.com/css?family=Titillium+Web:400,200,300,600,700' rel='stylesheet' type='text/css'>-->
+		<!--<script type="text/javascript" src="http://www.youziku.com/webfont/FastJS/5a25e38effc1474ba991f92fcef20061.js"></script>-->
 	</head>
 
 	<body>
@@ -59,7 +59,7 @@
 		</section>
 
 		<section id="resume" class="wrapper">
-			<h1 class="song">曾经在这些公司工作过</h1>
+			<h1 class="song">曾经为这些公司贡献过代码</h1>
 			<div class="row center">
 				<ul class="timeline" id="timeline">
 					<li class="li">
@@ -71,13 +71,15 @@
 							<h4> web设计 </h4>
 						</div>
 					</li>
-					<li class="li">
+					<li class="li up">
 						<div class="timestamp">
-							<span class="author">麦粒(北京)科技有限公司</span>
-							<span class="date">2012/11-2013/08</span>
 						</div>
 						<div class="status">
 							<h4> web设计 </h4>
+						</div>
+						<div class="timestamp">
+							<span class="author">麦粒(北京)科技有限公司</span>
+							<span class="date">2012/11-2013/08</span>
 						</div>
 					</li>
 					<li class="li">
@@ -89,13 +91,35 @@
 							<h4> 前端开发 </h4>
 						</div>
 					</li>
-					<li class="li">
+					<li class="li up">
+						<div class="timestamp">
+						</div>
+						<div class="status">
+							<h4> 前端开发 </h4>
+						</div>
 						<div class="timestamp">
 							<span class="author">北京润一融投网络技术有限公司</span>
 							<span class="date">2014/09-2015/08</span>
 						</div>
+					</li>
+					<li class="li">
+						<div class="timestamp">
+							<span class="author">北京华信杰通科技有限公司 </span>
+							<span class="date">2015/07-2016/07</span>
+						</div>
 						<div class="status">
-							<h4> 前端开发 </h4>
+							<h4> 研发工程师 </h4>
+						</div>
+					</li>
+					<li class="li up">
+						<div class="timestamp">
+						</div>
+						<div class="status">
+							<h4> 软件工程师 </h4>
+						</div>
+						<div class="timestamp">
+							<span class="author">沈阳陆壹捌工作室</span>
+							<span class="date">2016/08-</span>
 						</div>
 					</li>
 				</ul>
@@ -399,7 +423,7 @@
 				<li class="zoomin" data-percent=".7">
 					<div>CSS</div>
 				</li>
-				<li class="zoomin" data-percent=".65">
+				<li class="zoomin" data-percent=".8">
 					<div>JavaScript</div>
 				</li>
 				<li class="zoomin" data-percent=".75">
@@ -414,8 +438,17 @@
 				<li class="zoomin" data-percent=".9">
 					<div>PhotoShop</div>
 				</li>
-				<li class="zoomin" data-percent=".4">
+				<li class="zoomin" data-percent=".8">
 					<div>Ionic</div>
+				</li>
+				<li class="zoomin" data-percent=".8">
+					<div>React</div>
+				</li>
+				<li class="zoomin" data-percent=".7">
+					<div>Redux</div>
+				</li>
+				<li class="zoomin" data-percent=".4">
+					<div>ReactNative</div>
 				</li>
 				<li class="zoomin" data-percent=".6">
 					<div>BootStrap</div>
@@ -426,7 +459,7 @@
 			</p>
 		</section>
 		<section id="tools" class="wrapper">
-			<h1 class="song" data-stellar-ratio=".2">开发时的得力助手</h1>
+			<h1 class="song" data-stellar-ratio=".2">开发工具</h1>
 			<div class='imac-wrapper' data-stellar-ratio="3">
 				<div class="toolicon">
 					<i class="rotateIn"><img src="images/chrome.png"/></i>
@@ -473,16 +506,22 @@
 				<div class="nine columns main-col">
 
 					<h2 class="song">技能描述</h2>
-
-					<p> • 熟悉Html5,Css3，了解ES6新特性
-						<br /> • 有Node开发经验(个人项目)，了解Node端各种工具的使用npm grunt bower等
-						<br /> • 理解异步编程思想，了解Promise
-						<br /> • 熟悉前端MVC/MVVM架构，了解RESTful架构, 有开发实践(个人项目)
-						<br /> • 了解常见的PC端及移动端的兼容性问题，能独立完成符合标准的解决方案
-						<br /> • 了解常见的安全问题，有XSS攻击的实践
-						<br /> • 有阅读英文文档的能力，能使用Github、StackOverFlow等网站解决问题
-						<br /> • 良好的编码规范，能写出符合web语义化的代码
-						<br />
+					<p> •熟悉Html5 Css3新特性
+					<br /> • 熟悉各浏览器常见兼容问题解决方案
+					<br /> • 熟悉移动端开发，熟悉响应式布局，flex布局等常见布局方案
+					<br /> • 熟悉各种Css预处理、后处理工具(Sass,postCSS)
+					<br /> • 熟悉常见框架/库的使用(jQuery Bootstrap Lodash/Undescore)
+					<br /> • 熟悉webapp,single page app开发模式
+					<br /> • 熟悉前端MVC,MVVM架构，熟练使用Angular(1.0)
+					<br /> • 熟悉组件化开发模式,熟悉React,及其周边生态如Redux，Immutable
+					<br /> • 熟练使用前端构建工具(gulp webpack),
+					<br /> • 熟悉各种异步解决方案(Callback Promise Co/Generator Async/Await),写过Promise A+实现
+					<br /> • 熟悉es2015 es2016新特性
+					<br /> • 熟练阅读英文文档，熟练使用google stackoverflow解决问题
+					<br /> • 熟练使用Github
+					<br /> • 代码结构良好,能使用markdown编写文档
+					<br /> • 了解node，使用node编写过各种小工具
+					<br /> • 了解常见数据结构，设计模式的js实现
 					</p>
 					<div class="row">
 
@@ -505,7 +544,7 @@
 
 						<div class="columns download">
 							<p>
-								<a href="resume.doc" class="button"><i class="fa fa-download"></i>下载简历</a>
+								<a href="resume.docx" class="button"><i class="fa fa-download"></i>下载简历</a>
 							</p>
 						</div>
 
@@ -534,10 +573,10 @@
 		<script src="js/waypoints.js"></script>
 		<script src="js/magnific-popup.js"></script>
 		<script src="js/init.js"></script>
-		<script type="text/javascript">
-			$youziku.load(".song", "5a25e38effc1474ba991f92fcef20061", "hdjtechusong");
-			$youziku.draw();
-		</script>
+		<!--<script type="text/javascript">-->
+			<!--$youziku.load(".song", "5a25e38effc1474ba991f92fcef20061", "hdjtechusong");-->
+			<!--$youziku.draw();-->
+		<!--</script>-->
 	</body>
 
 </html>
