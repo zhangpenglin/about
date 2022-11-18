@@ -25,32 +25,9 @@
 
     <link href="manifest.json" rel="manifest">
 
-    <style>
-        .navbar-light .navbar-nav .nav-link.nav-btn-a2hs {
-            display: none;
-            background-color: darkred;
-            color: white;
-        }
-    </style>
-
 </head>
 
 <body>
-    <header class="bg-white main-header-lg fixed-top d-none d-lg-flex">
-        <nav class="navbar text-dark fixed-top navbar-expand navbar-light bg-transparent col-12">
-            <div class="container mx-1 col-12">
-                <div class="navbar-collapse collapse" id="navbarsExampleDefault">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <span class="nav-btn-a2hs nav-link jello animated">
-                                Install This Progressive Web App From the Menu
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
 
     <div class="container">
         <br /><br /><br />
@@ -164,9 +141,7 @@
         </div>
 
     </div>
-
-
-    <div class="ath-container banner-bottom-center slideInUp animated">
+    <div class="ath-container banner-bottom-center">
         <div class="ath-banner">
             <div class="ath-banner-cell ath-banner-cell-md">
                 <img src="imgs/pwa-logo-50x50.png" alt="PWA" class="ath-prompt-logo">
@@ -183,10 +158,7 @@
         </div>
     </div>
 
-    <div class="modal animate fadeIn" tabindex="-1" role="dialog"></div>
-
     <script src="js/addtohomescreen.js"></script>
-    <script src="js/a2hs_prompt.js"></script>
     <script>
         let target = document.querySelector( ".log-target" );
 
@@ -196,22 +168,18 @@
 
         function clearToken() {
 
-            a2hsPrompt.clearSession(); // reset the user session
+            ath.clearSession(); // reset the user session
 
         }
 
         let $btnCancel = document.querySelector( ".btn-cancel-ath" ),
             $btnInstall = document.querySelector( ".btn-install-ath" ),
-            $ath_prompt = document.querySelector( ".ath-container" ),
-            $a2hs_menu = document.querySelector( ".nav-btn-a2hs" ),
-            instance, platform,
+            instance,
             session = {};
 
         $btnCancel.addEventListener( "click", e => {
 
             e.preventDefault();
-
-            $ath_prompt.classList.toggle( "d-flex" );
 
             handleCancel();
 
@@ -223,11 +191,7 @@
 
             e.preventDefault();
 
-            if ( platform.beforeInstallPrompt ) {
-                triggerNativePrompt();
-            }
-
-            $ath_prompt.classList.toggle( "d-flex" );
+            handleInstall();
 
             return false;
 
@@ -235,59 +199,68 @@
 
         function handleCancel() {
 
-            //   instance.optOut();
+            instance.optOut();
 
         }
 
         function handleInstall() {
 
+            if ( instance.beforeInstallPrompt ) {
+
+                instance.triggerNativePrompt();
+
+            } else {
+
+                instance.optIn();
+
+            }
 
         }
-
-        function triggerNativePrompt() {
-
-            platform.beforeInstallPrompt.prompt();
-
-            platform.beforeInstallPrompt.userChoice.then( function ( choiceResult ) {
-
-                    console.log( choiceResult );
-
-                } )
-                .catch( function ( err ) {
-
-                    console.error( err.message );
-
-                } );
-
-        }
-
 
         if ( "serviceWorker" in navigator ) {
 
             navigator.serviceWorker.register( "/sw.js" );
 
             var ath = addToHomescreen( {
-                appId: "a2hs-demo-pwa",
+                autostart: false,
+                autoHide: 0,
                 logging: true,
-                onCanInstall: function ( p, instance ) {
-                    console.log( "Platform: ", p );
-                    console.log( "Instance: ", instance );
+                minSessions: 2,
+                onShow: function ( platform, ses, _instance ) {
+                    console.log( "showing: ", platform );
+                    console.log( "session: ", ses );
+                    console.log( "_instance: ", _instance );
 
-                    platform = p;
+                    session = ses;
+                    instance = _instance;
 
-                    setTimeout( () => {
+                    let $ath_prompt = document.querySelector( ".ath-container" );
 
-                        $ath_prompt.classList.toggle( "d-flex" );
-
-                        $a2hs_menu.classList.toggle( "d-flex" );
-
-                    }, 4000 );
+                    $ath_prompt.classList.add( "d-flex" );
 
                 },
-                onBeforeInstallPrompt: function ( platform ) {
-                    console.log( "Platform: ", platform );
+                onInit: function ( _instance ) {
+                    console.log( "initializing" );
+                },
+                onAdd: function ( _instance, session ) {
+                    console.log( "adding" );
+                },
+                onInstall: function ( evt ) {
 
-                }
+                    console.log( "Installing" );
+                    handleInstall();
+
+                },
+                onCancel: function ( choiceResult ) {
+
+                    console.log( "Cancelling" );
+                    handleCancel();
+
+                },
+                displayNextPrime: true,
+                customCriteria: true,
+                displayPace: 0,
+                mustShowCustomPrompt: false
             } );
 
         }
